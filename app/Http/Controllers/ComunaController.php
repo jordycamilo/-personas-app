@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comuna;
 use Illuminate\Http\Request;
-use illuminate\Support\facades\DB;
+use Illuminate\Support\Facades\DB;
 
 class ComunaController extends Controller
 {
@@ -103,7 +103,7 @@ return view('comuna.index', ['comunas' => $comunas]);
 
         $comunas=DB::table('tb_comuna')
         ->join ('tb_municipio', 'tb_comuna.muni_codi', "=", 'tb_municipio.muni_codi')
-        ->select ('tn_comuna.*',"tb_municipio.muni_nomb")
+        ->select ('tb_comuna.*',"tb_municipio.muni_nomb")
         ->get();
 
         return view('comuna.index', ['comunas'=>$comunas]);
